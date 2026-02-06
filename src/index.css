@@ -1,0 +1,1199 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;800&family=JetBrains+Mono:wght@400;700&family=Indie+Flower&family=Dancing+Script:wght@700&display=swap');
+
+:root {
+  --primary: #6366f1;
+  --primary-hover: #4f46e5;
+  --secondary: #ec4899;
+  --bg-dark: #faf7ec;
+  --bg-darker: #fcf7ea;
+  --text-main: #1a1c1e;
+  --text-muted: #64748b;
+  --glass: rgba(255, 254, 245, 0.7);
+  --glass-border: rgba(0, 0, 0, 0.05);
+  --glass-blur: blur(12px);
+  --card-shadow: 0 10px 40px -15px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  height: auto;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-darker);
+  color: var(--text-main);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* HANDWRITTEN ANNOTATION STYLE */
+.handwritten-evidence {
+  font-family: 'Indie Flower', cursive;
+  color: #2c2c2c;
+  /* Pencil/Ink Black */
+  font-weight: 700;
+  font-size: 1.1rem;
+  position: absolute;
+  z-index: 50;
+  pointer-events: none;
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.sticky-note-text {
+  background: #fef08a;
+  /* Yellow Note */
+  color: #1a1a1a;
+  padding: 15px 20px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
+  transform: rotate(-2deg);
+  font-family: 'Indie Flower', cursive;
+  font-weight: 600;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* VS Code Workspace Styles */
+.editor-container {
+  background: #1e1e1e;
+  border-radius: 12px;
+  border: 4px solid #333;
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+  margin: 8rem 0;
+  font-family: 'JetBrains Mono', monospace;
+  position: relative;
+  z-index: 5;
+}
+
+.editor-header {
+  background: #2d2d2d;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.editor-dots {
+  display: flex;
+  gap: 8px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.dot.red {
+  background: #ff5f56;
+}
+
+.dot.yellow {
+  background: #ffbd2e;
+}
+
+.dot.green {
+  background: #27c93f;
+}
+
+.editor-tab {
+  background: #1e1e1e;
+  color: #fff;
+  padding: 8px 25px;
+  font-size: 13px;
+  border-top: 2px solid #007acc;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.editor-content {
+  display: flex;
+  min-height: 500px;
+}
+
+.line-numbers {
+  padding: 30px 20px;
+  color: #858585;
+  text-align: right;
+  border-right: 1px solid #333;
+  font-size: 14px;
+  background: #1e1e1e;
+}
+
+.code-area {
+  padding: 30px;
+  flex-grow: 1;
+  color: #d4d4d4;
+  font-size: 15px;
+  background: #1e1e1e;
+}
+
+.skill-tag-3d {
+  display: inline-block;
+  background: #007acc;
+  color: white;
+  padding: 6px 15px;
+  margin: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  box-shadow: 4px 4px 0px #004a80;
+  transform: rotate(-2deg);
+  transition: transform 0.2s;
+}
+
+.skill-tag-3d:hover {
+  transform: translateY(-5px) rotate(0deg);
+}
+
+.edu-note {
+  position: absolute;
+  width: 240px;
+  padding: 20px;
+  background: #fff4bd;
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.2);
+  border: 1px solid #e6dbac;
+  color: #000;
+  font-family: 'Indie Flower', cursive;
+  font-weight: 900;
+  z-index: 30;
+}
+
+.edu-note.note-1 {
+  top: 50px;
+  right: -50px;
+  transform: rotate(8deg);
+}
+
+.edu-note.note-2 {
+  bottom: 50px;
+  left: -50px;
+  transform: rotate(-5deg);
+}
+
+.terminal-section {
+  background: #0d0d0d;
+  padding: 20px;
+  border-top: 2px solid #333;
+}
+
+.terminal-prompt {
+  color: #27c93f;
+}
+
+.confidential-stamp {
+  position: absolute;
+  padding: 5px 15px;
+  border: 4px double #ef4444;
+  color: #ef4444;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 950;
+  text-transform: uppercase;
+  transform: rotate(-15deg);
+  font-size: 1.2rem;
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: 10;
+  letter-spacing: 2px;
+}
+
+/* Rest of the existing styles... */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.section {
+  padding: 100px 0;
+}
+
+.glass {
+  background: var(--glass);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+}
+
+/* UNIQUE GLITCH BUTTON FOR PROJECTS */
+.glitch-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 28px;
+  background: black;
+  color: white;
+  font-weight: 900;
+  text-transform: uppercase;
+  border: none;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 6px 6px 0px #ec4899;
+  transition: all 0.2s;
+  text-decoration: none;
+  /* Ensure no underline for links */
+}
+
+.glitch-btn:hover {
+  box-shadow: 10px 10px 0px #3b82f6;
+  transform: translate(-4px, -4px);
+}
+
+.glitch-btn-text {
+  position: relative;
+  z-index: 2;
+  transition: transform 0.3s cubic-bezier(0.8, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.glitch-btn:hover .glitch-btn-text {
+  transform: translateY(-200%);
+}
+
+.glitch-btn-clone {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fde047;
+  /* Yellow reveal */
+  color: black;
+  font-weight: 900;
+  transition: transform 0.3s cubic-bezier(0.8, 0, 0.2, 1);
+  gap: 8px;
+}
+
+.glitch-btn:hover .glitch-btn-clone {
+  transform: translateY(-100%);
+}
+
+/* NOTEBOOK PROJECTS LAYOUT */
+.notebook-project-card {
+  background: #fff;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto 6rem;
+  padding: 2rem 2rem 2rem 4rem;
+  /* Extra left padding for holes */
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.15);
+  border: 1px solid #e5e5e5;
+  display: flex;
+  gap: 3rem;
+  position: relative;
+  transition: transform 0.3s ease;
+  font-family: 'Indie Flower', cursive;
+  /* Handwritten font for everything */
+  overflow: hidden;
+  /* Keep content inside 'page' */
+}
+
+/* Notebook holes */
+.notebook-binding-holes {
+  position: absolute;
+  left: 15px;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  z-index: 2;
+  padding: 20px 0;
+}
+
+.binding-hole {
+  width: 20px;
+  height: 20px;
+  background: #222;
+  border-radius: 50%;
+  box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.project-polaroid {
+  flex: 0 0 280px;
+  /* Fixed width for image section */
+  height: 240px;
+  background: #fff;
+  padding: 12px 12px 50px 12px;
+  /* Polaroid padding */
+  transform: rotate(-3deg);
+  box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border: 1px solid #eee;
+}
+
+.project-polaroid img,
+.project-polaroid .icon-placeholder {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ddd;
+}
+
+/* Tape over photo */
+.photo-tape {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%) rotate(2deg);
+  width: 100px;
+  height: 30px;
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(2px);
+}
+
+.project-handwritten-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #333;
+}
+
+.project-handwritten-title {
+  font-size: 2.8rem;
+  font-weight: 900;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  color: #000;
+  line-height: 0.9;
+}
+
+.project-handwritten-desc {
+  font-size: 1.4rem;
+  line-height: 1.3;
+  margin-bottom: 2rem;
+  opacity: 0.8;
+}
+
+.handwritten-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #fff;
+  border: 3px solid #000;
+  padding: 12px 35px;
+  font-weight: 900;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 6px 6px 0px #000;
+  transition: all 0.2s;
+  width: fit-content;
+  font-family: 'Indie Flower', cursive;
+  color: #000;
+  text-decoration: none;
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  /* Organic border */
+}
+
+.handwritten-btn:hover {
+  transform: scale(1.05) rotate(-2deg);
+  box-shadow: 10px 10px 0px #ec4899;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .notebook-project-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-left: 2rem;
+    gap: 2rem;
+  }
+
+  .project-polaroid {
+    transform: rotate(2deg);
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .project-handwritten-content {
+    align-items: center;
+  }
+}
+
+/* ADVANCED NOTEBOOK UI DECORATIONS */
+.notebook-project-card.paper-grid {
+  background-image:
+    linear-gradient(#f0f0f0 1px, transparent 1px),
+    linear-gradient(90deg, #f0f0f0 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.notebook-project-card.paper-lined {
+  background-image: repeating-linear-gradient(transparent, transparent 29px, #e5e7eb 30px);
+  line-height: 30px;
+  /* Align text to lines */
+}
+
+/* Realistic Ink Stamp */
+.project-stamp-seal {
+  position: absolute;
+  bottom: 30px;
+  right: 40px;
+  border: 4px double #ef4444;
+  /* Red stamp */
+  color: #ef4444;
+  padding: 5px 15px;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 900;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  transform: rotate(-15deg);
+  opacity: 0.6;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  border-radius: 8px;
+  letter-spacing: 2px;
+}
+
+.project-stamp-seal::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPgo8cmVjdCB3aWR0aD0iNCIgaGVpZ2h0PSI0IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMiIvPgo8L3N2Zz4=');
+  opacity: 0.5;
+}
+
+/* Color Palette Swatches */
+.color-swatch-strip {
+  display: flex;
+  gap: 8px;
+  margin-top: 15px;
+  padding: 5px;
+  background: #fff;
+  border: 1px solid #ccc;
+  width: fit-content;
+  border-radius: 4px;
+  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
+  transform: rotate(1deg);
+}
+
+.swatch-circle {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+/* Washi Tape Variations */
+.tape-cross {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  width: 60px;
+  height: 20px;
+  background: rgba(236, 72, 153, 0.4);
+  /* Pink tape */
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.tape-cross::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(236, 72, 153, 0.4);
+  transform: rotate(90deg);
+}
+
+/* Paperclip SVG container positioning */
+.paperclip-decoration {
+  position: absolute;
+  top: -15px;
+  right: 20px;
+  z-index: 10;
+  /* Grey metal */
+  filter: drop-shadow(2px 2px 1px rgba(0, 0, 0, 0.3));
+  transform: rotate(15deg);
+}
+
+/* PROJECT CARD HOVER EFFECTS */
+.project-card {
+  /* Use the variable sent from React, default to 0deg */
+  transform: rotate(var(--rotation, 0deg));
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+  /* Redefine basic card props to ensure they apply if App.css is loaded weirdly */
+  background: white;
+  border: 4px solid black;
+  border-radius: 4px;
+  padding: 1.5rem;
+  position: relative;
+  box-shadow: 12px 12px 0px black;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card:hover {
+  /* Lift up, scale slightly, and straighten the card (reset rotation) */
+  transform: rotate(0deg) translateY(-15px) scale(1.02);
+  box-shadow: 15px 15px 0px #3b82f6;
+  /* Blue shadow on hover */
+  z-index: 20;
+}
+
+.project-card:hover .project-stamp {
+  transform: rotate(0deg) scale(1.1);
+  opacity: 1;
+}
+
+.project-card:hover .card-tape {
+  opacity: 0;
+  /* Hide tape on lift to imply it peeled off */
+  transform: translateY(-20px) scale(0.8);
+  transition: all 0.3s;
+}
+
+/* IDEA GENERATOR STYLES */
+.idea-generator-container {
+  /* background: #fdf2f8; */
+  background: #379bb7;
+  /* Light pink background */
+  border: 4px solid black;
+  padding: 3rem;
+  max-width: 800px;
+  margin: 6rem auto 2rem;
+  position: relative;
+  text-align: center;
+  box-shadow: 12px 12px 0px black;
+  transform: rotate(1deg);
+}
+
+.idea-generator-container::before {
+  content: "CREATIVE_TOOLKIT_v1.0";
+  position: absolute;
+  top: -15px;
+  left: 20px;
+  background: black;
+  color: white;
+  padding: 4px 12px;
+  font-weight: 900;
+  font-size: 0.8rem;
+  transform: rotate(-1deg);
+}
+
+.idea-display-screen {
+  background: #1a1a1a;
+  color: #22c55e;
+  font-family: 'JetBrains Mono', monospace;
+  padding: 1.5rem;
+  border: 4px inset #444;
+  margin-bottom: 1.5rem;
+  height: 160px;
+  /* Compact fixed height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  /* Standard font size */
+  line-height: 1.4;
+  text-transform: uppercase;
+  font-weight: 900;
+  text-shadow: 0 0 15px rgba(34, 197, 94, 0.6);
+  position: relative;
+  overflow: hidden;
+}
+
+.idea-display-screen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+  background-size: 100% 4px;
+  pointer-events: none;
+}
+
+.idea-btn {
+  background: #fde047;
+  /* Yellow */
+  border: 4px solid black;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  font-weight: 950;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 6px 6px 0px black;
+  transition: all 0.1s;
+  font-family: 'Outfit', sans-serif;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-width: 340px;
+  /* Fixed width to prevent resizing */
+}
+
+.idea-btn:active {
+  transform: translate(4px, 4px);
+  box-shadow: 2px 2px 0px black;
+}
+
+.idea-btn:hover {
+  background: #ec4899;
+  /* Pink hover */
+  color: white;
+}
+
+.decorator-knob {
+  width: 25px;
+  height: 25px;
+  background: #d1d5db;
+  border: 2px solid black;
+  border-radius: 50%;
+  position: absolute;
+  box-shadow: 2px 2px 0px black;
+}
+
+.decorator-speaker {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  display: flex;
+  gap: 4px;
+}
+
+.speaker-grill {
+  width: 6px;
+  height: 40px;
+  background: #333;
+  border-radius: 4px;
+}
+
+/* Mobile responsiveness for Idea Generator */
+@media (max-width: 600px) {
+  .idea-generator-container {
+    padding: 1.5rem;
+    margin: 4rem auto 2rem;
+  }
+
+  .idea-display-screen {
+    font-size: 1.1rem;
+    padding: 1rem;
+    height: 140px;
+  }
+
+  .idea-btn {
+    min-width: 0 !important;
+    /* Force override */
+    width: 100% !important;
+    /* Force full width */
+    display: flex;
+    /* Ensure flex behavior fills space */
+    font-size: 1rem;
+    padding: 1rem;
+  }
+
+  /* Adjust decorations for mobile */
+  .decorator-knob {
+    width: 12px;
+    height: 12px;
+    right: 8px !important;
+    /* Override inline styles */
+  }
+
+  /* Target specific knobs to reposition vertically */
+  .idea-generator-container .decorator-knob:nth-of-type(1) {
+    top: 8px !important;
+  }
+
+  .idea-generator-container .decorator-knob:nth-of-type(2) {
+    top: 26px !important;
+  }
+
+  .decorator-speaker {
+    left: 8px !important;
+    bottom: 8px !important;
+    gap: 2px;
+  }
+
+  .speaker-grill {
+    width: 4px;
+    height: 25px;
+  }
+}
+
+/* SELFIE STATION STYLES */
+.photobooth-container {
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+  align-items: center;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.camera-frame {
+  width: 400px;
+  height: 300px;
+  background: #000;
+  border: 8px solid #333;
+  border-radius: 12px;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.camera-feed {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.camera-ui-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px 15px;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent);
+  color: white;
+  font-family: monospace;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  z-index: 10;
+}
+
+.rec-dot {
+  width: 10px;
+  height: 10px;
+  background: red;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 8px;
+  animation: flash 1s infinite;
+}
+
+@keyframes flash {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+.camera-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background: #1a1a1a;
+  z-index: 5;
+  text-align: center;
+  padding: 20px;
+}
+
+.booth-btn {
+  padding: 10px 20px;
+  border-radius: 50px;
+  border: 3px solid black;
+  font-weight: 900;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: transform 0.1s;
+  font-family: 'Outfit', sans-serif;
+}
+
+.booth-btn:active {
+  transform: scale(0.95);
+}
+
+.start-btn {
+  background: #fde047;
+  margin-top: 15px;
+}
+
+.redo-btn {
+  background: #fff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 15px;
+  box-shadow: 4px 4px 0px black;
+}
+
+.camera-controls {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 10;
+}
+
+.shutter-btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: white;
+  border: 4px solid rgba(255, 255, 255, 0.5);
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.1s;
+}
+
+.shutter-btn:active {
+  transform: scale(0.9);
+}
+
+.shutter-inner {
+  width: 40px;
+  height: 40px;
+  background: red;
+  border-radius: 50%;
+}
+
+.countdown-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 8rem;
+  font-weight: 900;
+  color: white;
+  text-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  z-index: 20;
+  animation: pulse 1s infinite;
+}
+
+/* Polaroid Styles */
+.result-area {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.polaroid-film {
+  background: white;
+  padding: 15px 15px 60px 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  transform: rotate(2deg);
+  position: relative;
+  border: 1px solid #ddd;
+}
+
+.polaroid-film img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  /* Square photo */
+  object-fit: cover;
+  border: 1px solid #eee;
+  background: #f0f0f0;
+}
+
+.polaroid-film.empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 320px;
+  background: #f9f9f9;
+  color: #ccc;
+  font-weight: 900;
+  border: 2px dashed #ddd;
+}
+
+.tape-strip {
+  width: 120px;
+  height: 35px;
+  background: rgba(236, 72, 153, 0.4);
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-3deg);
+  backdrop-filter: blur(2px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.photo-overlay-decor {
+  pointer-events: none;
+  inset: 0;
+}
+
+/* SELFIE STATION SCRAPBOOK BACKGROUND */
+.selfie-station-section {
+  position: relative;
+}
+
+.selfie-bg-decorations {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Large Background Text */
+.bg-text {
+  position: absolute;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 900;
+  opacity: 0.08;
+  user-select: none;
+}
+
+.bg-text-1 {
+  font-size: 8rem;
+  top: 10%;
+  left: 5%;
+  color: #fde047;
+  transform: rotate(-5deg);
+}
+
+.bg-text-2 {
+  font-size: 7rem;
+  bottom: 20%;
+  right: 8%;
+  color: #ec4899;
+  transform: rotate(8deg);
+}
+
+.bg-text-3 {
+  font-size: 10rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-10deg);
+  opacity: 0.05;
+}
+
+/* Hand-drawn Arrows */
+.doodle-arrow {
+  position: absolute;
+  font-size: 4rem;
+  opacity: 0.3;
+  animation: wiggleArrow 3s ease-in-out infinite;
+}
+
+.arrow-1 {
+  top: 20%;
+  left: 20%;
+  color: #3b82f6;
+}
+
+.arrow-2 {
+  top: 50%;
+  right: 25%;
+  color: #ec4899;
+  animation-delay: 1s;
+}
+
+.arrow-3 {
+  bottom: 25%;
+  left: 30%;
+  color: #fde047;
+  animation-delay: 2s;
+}
+
+@keyframes wiggleArrow {
+
+  0%,
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
+
+  50% {
+    transform: rotate(10deg) scale(1.1);
+  }
+}
+
+/* Sticky Notes */
+.sticky-note {
+  position: absolute;
+  width: 150px;
+  padding: 15px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+  z-index: 3;
+}
+
+.sticky-note:hover {
+  transform: rotate(0deg) !important;
+  box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.25);
+}
+
+.note-yellow {
+  background: #fde047;
+  border: 2px solid #000;
+}
+
+.note-pink {
+  background: #ec4899;
+  border: 2px solid #000;
+  color: white;
+}
+
+.note-blue {
+  background: #3b82f6;
+  border: 2px solid #000;
+  color: white;
+}
+
+.note-content {
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Decorative Doodles */
+.doodle-star,
+.doodle-heart,
+.doodle-sparkle {
+  position: absolute;
+  font-size: 2.5rem;
+  opacity: 0.4;
+  animation: floatGentle 4s ease-in-out infinite;
+}
+
+.doodle-star {
+  animation-delay: 0s;
+}
+
+.doodle-heart {
+  animation-delay: 1.5s;
+}
+
+.doodle-sparkle {
+  animation-delay: 3s;
+}
+
+@keyframes floatGentle {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+.selfie-station-section .container {
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width: 768px) {
+
+  /* Reduce background text size */
+  .bg-text-1 {
+    font-size: 4rem;
+    top: 5%;
+    left: 2%;
+  }
+
+  .bg-text-2 {
+    font-size: 3.5rem;
+    bottom: 10%;
+    right: 2%;
+  }
+
+  .bg-text-3 {
+    font-size: 5rem;
+  }
+
+  /* Smaller arrows */
+  .doodle-arrow {
+    font-size: 2.5rem;
+  }
+
+  /* Adjust sticky notes for mobile */
+  .sticky-note {
+    width: 80px;
+    padding: 8px;
+    font-size: 0.65rem;
+  }
+
+  .note-content p {
+    font-size: 0.65rem !important;
+  }
+
+  .note-yellow {
+    top: 10% !important;
+    left: 5% !important;
+  }
+
+  .note-pink {
+    top: auto !important;
+    bottom: 10% !important;
+    right: 5% !important;
+  }
+
+  .note-blue {
+    display: none;
+  }
+
+  /* Camera adjustments */
+  .camera-interface-wrapper {
+    max-width: 100% !important;
+  }
+
+  .camera-frame {
+    width: 100%;
+    height: 250px;
+  }
+
+  .photobooth-container {
+    gap: 2rem;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Polaroid adjustments */
+  .result-area {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  /* Section padding */
+  .selfie-station-section {
+    padding: 60px 0 !important;
+  }
+}
+
+/* Tablet and Desktop adjustments for camera screen */
+@media (min-width: 769px) {
+  .digital-screen-area {
+    width: 64% !important;
+    top: 30% !important;
+  }
+}

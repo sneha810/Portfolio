@@ -1,0 +1,123 @@
+/* STYLES FOR FIRST HERO UI RESTORATION */
+
+.hero-decorations {
+    pointer-events: none;
+}
+
+.sticker {
+    position: absolute;
+    padding: 0.8rem 1.4rem;
+    border: 3px solid black;
+    font-weight: 950;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    z-index: 15;
+    pointer-events: auto;
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.sticker:hover {
+    transform: scale(1.1) rotate(0deg) !important;
+    z-index: 50;
+    box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.2) !important;
+}
+
+.sticker-pink {
+    background: #ec4899;
+    color: white;
+    box-shadow: 6px 6px 0px black;
+}
+
+.sticker-blue {
+    background: #3b82f6;
+    color: white;
+    box-shadow: 6px 6px 0px black;
+}
+
+.sticker-yellow {
+    background: #fde047;
+    color: black;
+    box-shadow: 6px 6px 0px black;
+}
+
+.syst-status-box {
+    background: white;
+    border: 4px solid black;
+    padding: 12px 18px;
+    box-shadow: 8px 8px 0px black;
+    font-family: 'JetBrains Mono', monospace;
+    width: 220px;
+}
+
+.status-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.7rem;
+    font-weight: 900;
+    border-bottom: 2px solid black;
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+}
+
+.status-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.65rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.paper-scrap {
+    position: absolute;
+    background: #111;
+    color: #0f0;
+    padding: 5px 10px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.7rem;
+    transform: rotate(-5deg);
+    box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.2);
+}
+
+/* Ensure centering consistency */
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Re-apply some specific animations just in case */
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(var(--rotation));
+    }
+
+    50% {
+        transform: translateY(-10px) rotate(var(--rotation));
+    }
+}
+
+@keyframes wiggle {
+
+    0%,
+    100% {
+        transform: rotate(var(--rotation));
+    }
+
+    50% {
+        transform: rotate(calc(var(--rotation) + 3deg));
+    }
+}
+
+.animate-float {
+    animation: float 4s ease-in-out infinite;
+}
+
+.animate-wiggle {
+    animation: wiggle 3s ease-in-out infinite;
+}
