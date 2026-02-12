@@ -24,9 +24,9 @@ const Hero = () => {
             <div className="hero-handwritten hero-handwritten-1">Let's build something cool! →</div>
             <div className="hero-handwritten hero-handwritten-2">↓ Check this out</div>
             <div className="hero-handwritten hero-handwritten-3">← Fresh ideas</div>
-            <div className="hero-arrow hero-arrow-1">↗</div>
-            <div className="hero-arrow hero-arrow-2">↘</div>
-            <div className="hero-arrow hero-arrow-3">↙</div>
+            <div className="hero-arrow hero-arrow-1">↘</div>
+            <div className="hero-arrow hero-arrow-2">↙</div>
+            <div className="hero-arrow hero-arrow-3">↗</div>
 
             {/* SYST_STATUS FLOATING MONITOR */}
             <div className="syst-status-box animate-float" style={{

@@ -48,12 +48,12 @@ const About = () => {
                             />
 
                             {/* Sketch Bubble */}
-                            <div className="sketch-bubble" style={{ top: '-15px', right: '-30px', background: '#f9a8d4' }}>
+                            <div className="sketch-bubble" style={{ top: '-15px', right: '-30px', background: '#f9a8d4' }} >
                                 THAT'S ME!
                             </div>
 
                             {/* Stitched Badge */}
-                            <div style={{ position: 'absolute', bottom: '-20px', left: '-20px' }} className="sticker sticker-yellow">
+                            <div style={{ position: 'absolute', bottom: '-20px', left: '-20px' }} className="sticker sticker-yellow" >
                                 100% SNEHA
                             </div>
                         </div>
@@ -67,7 +67,7 @@ const About = () => {
                             color: '#1a1a1a',
                             fontSize: '1.2rem',
                             transform: 'rotate(-2deg)'
-                        }}>
+                        }} >
                             <Paperclip size={24} style={{ marginBottom: '0.5rem', color: '#64748b' }} />
                             <div style={{ borderBottom: '2px dashed #000', display: 'inline-block' }}>
                                 EVIDENCE_01: ACTUAL HUMAN
@@ -78,13 +78,13 @@ const About = () => {
                         </div>
 
                         {/* Hand-drawn Arrow */}
-                        <div className="hand-drawn-arrow" style={{ top: '60%', right: '-40px', color: '#3b82f6' }}>
+                        <div className="hand-drawn-arrow" style={{ top: '60%', right: '-40px', color: '#3b82f6' }} >
                             <ArrowDownRight size={80} strokeWidth={1} />
                         </div>
                     </div>
 
                     {/* Experimental Text Side */}
-                    <div style={{ paddingTop: '1rem', position: 'relative' }}>
+                    <div style={{ paddingTop: '1rem', position: 'relative' }} >
                         <Quote size={80} style={{ position: 'absolute', top: '-40px', left: '-40px', opacity: 0.05 }} />
 
                         <div style={{ marginBottom: '2.5rem' }}>
@@ -103,15 +103,15 @@ const About = () => {
                             marginBottom: '3rem',
                             fontFamily: '"JetBrains Mono", monospace',
                         }}>
-                            <div style={{ background: 'white', border: '3px solid black', padding: '18px', boxShadow: '6px 6px 0px #3b82f6', position: 'relative' }}>
+                            <div style={{ background: 'white', border: '3px solid black', padding: '18px', boxShadow: '6px 6px 0px #3b82f6', position: 'relative' }} >
                                 <div style={{ fontSize: '0.75rem', color: '#64748b', fontWeight: 'bold', marginBottom: '5px' }}>// AGE_CYCLES</div>
                                 <div style={{ fontSize: '1.3rem', fontWeight: '900' }}>21_YEARS</div>
                             </div>
-                            <div style={{ background: 'white', border: '3px solid black', padding: '18px', boxShadow: '6px 6px 0px #ec4899' }}>
+                            <div style={{ background: 'white', border: '3px solid black', padding: '18px', boxShadow: '6px 6px 0px #ec4899' }} >
                                 <div style={{ fontSize: '0.75rem', color: '#64748b', fontWeight: 'bold', marginBottom: '5px' }}>// ORIGIN_POINT</div>
                                 <div style={{ fontSize: '1.3rem', fontWeight: '900' }}>KOLKATA_IN</div>
                             </div>
-                            <div style={{ background: 'white', border: '3px solid black', padding: '18px', boxShadow: '6px 6px 0px #fde047', gridColumn: 'span 2' }}>
+                            <div style={{ background: 'white', border: '3px solid black', padding: '18px', boxShadow: '6px 6px 0px #fde047', gridColumn: 'span 2' }} >
                                 <div style={{ fontSize: '0.75rem', color: '#64748b', fontWeight: 'bold', marginBottom: '5px' }}>// MISSION_CORE</div>
                                 <div style={{ fontSize: '1.1rem', fontWeight: '900', lineHeight: '1.3' }}>CURRENTLY PURSUING MY BACHELORS IN COMPUTER SCIENCE AND ENGINEERING.</div>
                             </div>
@@ -123,7 +123,7 @@ const About = () => {
                                 <span>SYSTEM_LOAD [GRADUATION_PROGRESS]</span>
                                 <span>98%</span>
                             </div>
-                            <div className="diagnostic-bar-container" style={{ height: '18px', background: 'white', border: '3px solid black', position: 'relative', overflow: 'hidden' }}>
+                            <div className="diagnostic-bar-container" style={{ height: '18px', background: 'white', border: '3px solid black', position: 'relative', overflow: 'hidden' }} >
                                 <div style={{ height: '100%', width: '98%', background: '#22c55e', animation: 'scan 2s infinite linear' }}></div>
                             </div>
                         </div>
@@ -141,7 +141,7 @@ const About = () => {
                                     background: i === 0 ? '#3b82f6' : i === 2 ? '#ec4899' : 'white',
                                     color: i === 0 || i === 2 ? '#fff' : '#000',
                                     boxShadow: '4px 4px 0px black'
-                                }}>
+                                }} >
                                     {skill}
                                 </div>
                             ))}
@@ -203,11 +203,19 @@ const IdeaGenerator = () => {
     const [idea, setIdea] = React.useState("PRESS BUTTON TO GENERATE IDEA");
     const [isAnimating, setIsAnimating] = React.useState(false);
 
+    // THEME STATE: 'default' | 'pink' | 'yellow'
+    const [themeColor, setThemeColor] = React.useState('#379bb7'); // Default Blue
+    const [colorIndex, setColorIndex] = React.useState(0);
+
+    // MODE STATE: false = Idea Mode, true = Roast Mode
+    const [roastMode, setRoastMode] = React.useState(false);
+
+    const colors = ['#379bb7', '#ec4899', '#facc15']; // Blue, Pink, Yellow
+
     const ideas = [
         "Tinder for Cats 🐱",
         "Uber for Toasters 🍞",
         "Spotify but only Elevator Music 🎵",
-        "AI that roasts your code 🔥",
         "VR meditation for Robots 🤖",
         "A Social Network for Introverts (No Chat) 🤐",
         "Crypto wallet for Monopoly Money 💸",
@@ -221,11 +229,37 @@ const IdeaGenerator = () => {
         "Duolingo but it teaches Klingon only 👽"
     ];
 
+    const roasts = [
+        "Your CSS is so messy, even the browser is confused. 💀",
+        "You treat warnings like suggestions. Fix them! ⚠️",
+        "404: Your coding skills not found. 🔍",
+        "Is that a feature or a bug? Yes. 🐛",
+        "I’ve seen better code on a cereal box. 🥣",
+        "Your commit messages are 'updates' and 'fix'. Do better. 🤡",
+        "Console.log('here') is not a debugger. 🛑",
+        "You push to main without testing? Brave. Or stupid. 💣",
+        "Your variable names give me a headache. 'x', really? 📉",
+        "That div is not centered. And it never will be. 📏"
+    ];
+
+    const toggleColor = () => {
+        const nextIndex = (colorIndex + 1) % colors.length;
+        setColorIndex(nextIndex);
+        setThemeColor(colors[nextIndex]);
+    };
+
+    const toggleMode = () => {
+        setRoastMode(prev => !prev);
+        setIdea(roastMode ? "MODE: APP IDEAS 💡" : "MODE: TECH ROASTS 🔥");
+    };
+
     const generateIdea = () => {
         setIsAnimating(true);
         let shuffleCount = 0;
+        const sourceArray = roastMode ? roasts : ideas;
+
         const interval = setInterval(() => {
-            setIdea(ideas[Math.floor(Math.random() * ideas.length)]);
+            setIdea(sourceArray[Math.floor(Math.random() * sourceArray.length)]);
             shuffleCount++;
             if (shuffleCount > 10) {
                 clearInterval(interval);
@@ -236,22 +270,39 @@ const IdeaGenerator = () => {
 
     return (
         <div className="container" style={{ position: 'relative', zIndex: 30 }}>
-            <div className="idea-generator-container">
-                {/* Decorative Elements */}
-                <div className="decorator-knob" style={{ top: '20px', right: '20px' }}></div>
-                <div className="decorator-knob" style={{ top: '60px', right: '20px' }}></div>
+            {/* Dynamic Background Color */}
+            <div className="idea-generator-container" style={{ background: themeColor, transition: 'background 0.3s ease' }}>
+
+                {/* BUTTON 1: COLOR CHANGER */}
+                <div
+                    className="decorator-knob interactive-knob"
+                    style={{ top: '20px', right: '20px', cursor: 'pointer', background: '#fff' }}
+                    onClick={toggleColor}
+                    title="Change Color Theme"
+                ></div>
+
+                {/* BUTTON 2: ROAST MODE TOGGLE */}
+                <div
+                    className="decorator-knob interactive-knob"
+                    style={{ top: '60px', right: '20px', cursor: 'pointer', background: roastMode ? '#ff0000' : '#00ff00' }}
+                    onClick={toggleMode}
+                    title="Toggle Roast Mode"
+                ></div>
 
                 <div className="decorator-speaker" style={{ left: '20px', bottom: '20px' }}>
                     {[1, 2, 3, 4].map(i => <div key={i} className="speaker-grill"></div>)}
                 </div>
 
-                <div className="idea-display-screen">
+                <div className="idea-display-screen" style={{
+                    color: roastMode ? '#ef4444' : '#22c55e',
+                    textShadow: roastMode ? '0 0 15px rgba(239, 68, 68, 0.6)' : '0 0 15px rgba(34, 197, 94, 0.6)'
+                }}>
                     {idea}
                 </div>
 
                 <button onClick={generateIdea} className="idea-btn" disabled={isAnimating}>
-                    <Sparkles size={24} />
-                    {isAnimating ? "GENERATING..." : "GENERATE NEW APP IDEA"}
+                    {roastMode ? <Zap size={24} /> : <Sparkles size={24} />}
+                    {isAnimating ? "PROCESSING..." : (roastMode ? "ROAST MY CODE 🔥" : "GENERATE NEW APP IDEA")}
                 </button>
             </div>
         </div>

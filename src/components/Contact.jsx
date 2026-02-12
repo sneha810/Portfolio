@@ -237,7 +237,7 @@ const Contact = () => {
             <div className="sticker-tag animate-wiggle sticker-interactive" style={{
                 position: 'absolute', top: '15%', right: '15%',
                 background: '#ff5f56', color: 'white', transform: 'rotate(10deg)'
-            }}>
+            }} >
                 URGENT // MAIL ME
             </div>
 
@@ -249,7 +249,7 @@ const Contact = () => {
             <div className="sticker-round animate-float sticker-interactive" style={{
                 position: 'absolute', bottom: '10%', left: '5%',
                 background: '#3b82f6', color: 'white', transform: 'rotate(-12deg)'
-            }}>
+            }} >
                 <span>SEND<br />IT!</span>
             </div>
 

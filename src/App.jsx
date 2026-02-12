@@ -4,11 +4,13 @@ import './hero_extra.css';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
+import SnehasDesk from './components/SnehasDesk';
 import Projects from './components/Projects';
 import SelfieCorner from './components/SelfieCorner';
 import SkillWorkspace from './components/SkillWorkspace';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+
 import Loader from './components/Loader';
 import Lenis from 'lenis';
 
@@ -56,6 +58,7 @@ function App() {
         <div className="scroll-content">
           <Hero />
           <About />
+          <SnehasDesk />
           <Projects />
           <SelfieCorner />
           <SkillWorkspace />

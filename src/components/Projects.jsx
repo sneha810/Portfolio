@@ -38,36 +38,41 @@ const ProjectCard = ({ project, index }) => {
                 }}
             >
                 {/* Floating "Field Note" Annotation */}
-                <div className="card-annotation" style={{ rotate: `${index % 2 === 0 ? -5 : 5}deg` }}>
-                    <PenTool size={12} />
-                    <span>VERIFICATION_STAMP_v2</span>
-                </div>
+                <motion.div
+                    className="card-annotation cute-note"
+                    style={{ rotate: `${index % 2 === 0 ? -5 : 5}deg` }}
+                    animate={{ y: [0, -5, 0] }}
+                    transition={{ repeat: Infinity, duration: 3, delay: index * 0.5 }}
+                >
+                    <Heart size={12} fill="#ec4899" color="#ec4899" />
+                    <span>COLLECTIBLE_ID_{index + 1}</span>
+                </motion.div>
 
                 {/* Internal Layered Content */}
                 <div className="card-inner-layer" style={{ transform: "translateZ(40px)" }}>
-                    <div className="card-visual-strip" style={{ backgroundColor: project.color + '22' }}>
+                    <div className="card-visual-strip cute-strip" style={{ backgroundColor: project.color + '15' }}>
                         <div className="visual-icon" style={{ color: project.color }}>
                             {project.icon}
                         </div>
                         <div className="visual-dots">
-                            <div className="v-dot" style={{ backgroundColor: project.color }}></div>
-                            <div className="v-dot" style={{ backgroundColor: project.color, opacity: 0.5 }}></div>
-                            <div className="v-dot" style={{ backgroundColor: project.color, opacity: 0.2 }}></div>
+                            <div className="v-dot pulse-dot" style={{ backgroundColor: project.color }}></div>
+                            <div className="v-dot pulse-dot" style={{ backgroundColor: project.color, opacity: 0.5, animationDelay: '0.2s' }}></div>
+                            <div className="v-dot pulse-dot" style={{ backgroundColor: project.color, opacity: 0.2, animationDelay: '0.4s' }}></div>
                         </div>
                     </div>
 
                     <div className="card-content">
                         <div className="card-metadata">
-                            <span className="meta-id">FILE_{project.title.substring(0, 3).toUpperCase()}</span>
-                            <span className="meta-status">STABLE_MODULE</span>
+                            <span className="meta-id">SERIES_0{index + 1}</span>
+                            <span className="meta-status">✨ RARITY: RARE</span>
                         </div>
 
-                        <h3 className="card-title">{project.title}</h3>
+                        <h3 className="card-title cute-h3">{project.title}</h3>
 
                         <div className="card-tags">
                             {project.tags.map((tag, i) => (
-                                <span key={i} className="creative-tag" style={{ color: project.color, borderColor: project.color + '44' }}>
-                                    #{tag.toLowerCase()}
+                                <span key={i} className="creative-tag cute-tag" style={{ color: project.color, borderColor: project.color + '44' }}>
+                                    {tag.toLowerCase()}
                                 </span>
                             ))}
                         </div>
@@ -77,19 +82,18 @@ const ProjectCard = ({ project, index }) => {
 
                     <div className="card-footer">
                         <div className="footer-stats">
-                            <div className="stat"> <Activity size={10} /> 99.9% </div>
-                            <div className="stat"> <Zap size={10} /> FAST </div>
+                            <div className="stat"> <Heart size={10} color="#ec4899" /> LIKE_IT </div>
                         </div>
 
                         <motion.a
                             href={project.link}
-                            className="creative-link-btn"
+                            className="creative-link-btn cute-link"
                             target="_blank"
                             rel="noopener noreferrer"
-                            whileHover={{ x: 5 }}
+                            whileHover={{ scale: 1.1, x: 5 }}
                             style={{ color: project.color }}
                         >
-                            ACCESS_PROTOTYPE <ArrowRight size={14} />
+                            PLAY_LIVE <Sparkles size={14} />
                         </motion.a>
                     </div>
                 </div>
@@ -143,22 +147,27 @@ const Projects = () => {
     return (
         <section id="projects" className="section-creative-projects">
             {/* Background Texture elements to sync with the site */}
-            <div className="creative-bg-deco">
-                <div className="deco-line"></div>
-                <div className="deco-text">GACHA_ARCHIVE_2024</div>
+            {/* Cute Decorative Elements */}
+            <div className="cute-floaters">
+                <motion.div className="floater f-1" animate={{ y: [0, -20, 0], rotate: 360 }} transition={{ duration: 5, repeat: Infinity }}><Sparkles size={40} color="#ec4899" opacity={0.1} /></motion.div>
+                <motion.div className="floater f-2" animate={{ y: [0, 20, 0], rotate: -360 }} transition={{ duration: 7, repeat: Infinity }}><Heart size={30} color="#3b82f6" opacity={0.1} /></motion.div>
+                <motion.div className="floater f-3" animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 4, repeat: Infinity }}><Plus size={50} color="#fde047" opacity={0.1} /></motion.div>
             </div>
 
             <div className="container" style={{ position: 'relative', zIndex: 10 }}>
                 <div className="creative-header">
                     <motion.div
-                        className="header-badge"
+                        className="header-badge cute-badge"
                         initial={{ opacity: 0, scale: 0.8 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                     >
-                        // SYSTEM_CATALOG
+                        ✨ GACHA_PROJECT_LOG v.4.0 ✨
                     </motion.div>
-                    <h2 className="creative-title">SELECTED_WORKS</h2>
-                    <p className="creative-subtitle">A collection of technical artifacts and digital experiences engineered with precision.</p>
+                    <h2 className="creative-title website-styled-title">
+                        <span className="title-outline">SELECTED</span>
+                        <span className="title-solid">_WORKS</span>
+                    </h2>
+                    <p className="creative-subtitle">A curated collection of technical artifacts and digital experiences designed by Sneha. 🎀</p>
                 </div>
 
                 <div className="creative-projects-grid">

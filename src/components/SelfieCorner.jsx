@@ -115,6 +115,31 @@ const SelfieCorner = () => {
                 <div className="doodle-star" style={{ top: '25%', right: '20%' }}>⭐</div>
                 <div className="doodle-heart" style={{ bottom: '30%', right: '15%' }}>💗</div>
                 <div className="doodle-sparkle" style={{ top: '40%', left: '15%' }}>✨</div>
+
+                {/* ADDED: Pinned Polaroid to background */}
+                <div style={{
+                    position: 'absolute',
+                    top: '20%', left: '5%',
+                    transform: 'rotate(5deg)',
+                    background: '#fff',
+                    padding: '8px 8px 30px 8px',
+                    boxShadow: '0 4px 10px rgba(0,0,0,0.1)',
+                    width: '120px',
+                    opacity: 0.8
+                }} >
+                    <div style={{ background: '#cbd5e1', height: '90px' }}></div>
+                    <div style={{
+                        position: 'absolute', bottom: '5px', width: '100%',
+                        textAlign: 'center', fontFamily: "'Indie Flower', cursive",
+                        fontSize: '0.7rem'
+                    }}>memory_1.jpg</div>
+                    {/* Push pin */}
+                    <div style={{
+                        position: 'absolute', top: '-8px', left: '50%',
+                        width: '12px', height: '12px', borderRadius: '50%',
+                        background: 'red', boxShadow: '1px 1px 2px rgba(0,0,0,0.3)'
+                    }}></div>
+                </div>
             </div>
 
             <div className="container">
